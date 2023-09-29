@@ -1,0 +1,25 @@
+GET /php-router/
+HOST: localhost
+
+
+###
+
+POST http://localhost/php-router/
+Content-Type: multipart/form-data; boundary=23929929299299299292992929
+
+
+###
+
+POST http://localhost/php-router/
+Content-Type: application/x-www-form-urlencoded
+
+
+&name=Mariam&age=18
+
+###
+
+DELETE http://localhost/php-router/?c=123
+Content-Type: application/x-www-form-urlencoded
+
+
+name=foo&age=bar
