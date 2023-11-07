@@ -6,6 +6,11 @@ SimpleRouter::get(
     '/', function () {
       return Template::view("index.html", [
         "title" => "App title",
+        "colors" => [
+          "red",
+          "green",
+          "blue"
+        ]
       ]);
     }
 );
