@@ -1,0 +1,25 @@
+{% extends layout.html %} {% block content %}
+
+<div class="flex gap-4 mb-4 items-center"> 
+  <div><a class="link" href="./contacts">Back</a></div>
+  <div><h2 class="text-xl text-content font-bold">New Contact form</h2></div>
+</div>
+
+<form class="flex flex-col gap-2" method="post">
+  <div class="flex gap-4 mb-4">
+    <input
+      type="text"
+      placeholder="Name"
+      name="name"
+      class="input input-bordered"
+      required
+    />
+    <input class='input input-bordered' type="tel" placeholder="Phone" name="phone" required />
+  </div>
+  <div class="flex gap-4 justify-end">
+    <button class="btn" type="reset">Reset</button>
+    <button class="btn btn-primary">Save</button>
+  </div>
+</form>
+
+{% endblock %}

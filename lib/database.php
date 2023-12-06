@@ -9,7 +9,9 @@ class Database
     {
         self::$connection = new PDO(self::$db);
         self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        self::set_timezone("Africa/Abidjan");
+        if (substr(self::$db, 0, 6) !== "sqlite") {
+            self::set_timezone("Africa/Abidjan");
+        }
     }
 
     static function query(string $sql)
@@ -63,3 +65,5 @@ class Database
         return true;
     }
 }
+
+Database::init();

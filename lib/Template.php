@@ -5,7 +5,7 @@ class Template
 
     static $blocks = array();
     static $cache_path = __DIR__ . '/../cache/';
-    static $cache_enabled = true;
+    static $cache_enabled = false;
 
     static function view($file, $data = array())
     {
@@ -16,12 +16,11 @@ class Template
 
     static function cache($file)
     {
-        global $LAYOUTS_DIR;
         if (!file_exists(self::$cache_path)) {
             mkdir(self::$cache_path, 0744);
         }
         $cached_file = self::$cache_path . str_replace(array('/', '.html'), array('_', ''), $file . '.php');
-        $path = realpath(__DIR__ . "/../" . $LAYOUTS_DIR . "/" . $file);
+        $path = realpath(__DIR__ . "/../" . LAYOUTS_DIR . "/" . $file);
         if (!self::$cache_enabled || !file_exists($cached_file) || filemtime($cached_file) < filemtime($path)) {
             $code = self::includeFiles($file);
             $code = self::compileCode($code);
@@ -49,8 +48,7 @@ class Template
 
     static function includeFiles($file)
     {
-        global $LAYOUTS_DIR;
-        $path = realpath(__DIR__ . "/../" . $LAYOUTS_DIR . "/" . $file);
+        $path = realpath(__DIR__ . "/../" . LAYOUTS_DIR . "/" . $file);
         $code = file_get_contents($path);
         preg_match_all('/{% ?(extends|include) ?\'?(.*?)\'? ?%}/i', $code, $matches, PREG_SET_ORDER);
         foreach ($matches as $value) {

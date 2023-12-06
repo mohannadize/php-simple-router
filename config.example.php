@@ -3,5 +3,5 @@
 require "./vendor/autoload.php";
 require "./lib/index.php";
 
-$ROOT_PATH = '/';
-$LAYOUTS_DIR = 'layouts/';
+define("ROOT_PATH", "/enet-management/");
+define("LAYOUTS_DIR", "layouts/");

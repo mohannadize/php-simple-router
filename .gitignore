@@ -1,3 +1,4 @@
 config.php
 cache
 .phpintel
+node_modules
